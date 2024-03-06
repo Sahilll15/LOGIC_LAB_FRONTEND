@@ -122,17 +122,7 @@ export const SideBar = () => {
             </div>
           </NavLink>
 
-          <NavLink to={"/myevents"}>
-            <div
-              className={`p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 ${location.pathname === "/notes" ? "bg-blue-500" : ""
-                } text-white`}
-            >
-              <i className="bi bi-house-door"></i>
-              <span className="text-[15px] ml-4 text-gray-200 font-bold">
-                My Events
-              </span>
-            </div>
-          </NavLink>
+          
 
           <NavLink to={"/todo"}>
             <div
@@ -142,6 +132,18 @@ export const SideBar = () => {
               <i className="bi bi-bell text-white"></i>
               <span className="text-[15px] ml-4 font-bold text-gray-200">
                 My List
+              </span>
+            </div>
+          </NavLink>
+
+          <NavLink to={"/forum"}>
+            <div
+              className={`p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 ${location.pathname === "/forum" ? "bg-blue-500" : ""
+                }`}
+            >
+              <i className="bi bi-bell text-white"></i>
+              <span className="text-[15px] ml-4 font-bold text-gray-200">
+                Forum
               </span>
             </div>
           </NavLink>
