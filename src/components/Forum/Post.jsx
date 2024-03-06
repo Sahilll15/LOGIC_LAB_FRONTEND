@@ -15,7 +15,7 @@ const Post = ({ setGetForum }) => {
     event.preventDefault();
     const formData = new FormData(event.target);
 
-    const token = localStorage.getItem("auth");
+    const token = localStorage.getItem("authtoken");
 
     try {
       const response = await fetch(
