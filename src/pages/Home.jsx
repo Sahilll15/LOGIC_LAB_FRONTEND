@@ -56,7 +56,6 @@ const Home = () => {
               filter === 'BookMarked' ? <h1 className='text-black text-center text-2xl mb-10'>BookMarked Notes </h1> : null
             }
           </div>
-          <MyCalendar />
           <motion.div className='flex flex-wrap justify-center'
             initial='hidden'
             whileInView={'show'}

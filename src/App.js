@@ -40,6 +40,7 @@ import UserHome from './pages/UserHome';
 import PatDash from './pages/PatDash';
 import MyEvents from './pages/MyEvents';
 import Forum from './pages/Forum';
+import CompanyDetail from './pages/CompanyDetail';
 
 
 const App = () => {
@@ -118,7 +119,7 @@ const App = () => {
               <Route path="/YourNotes" element={<YourNotes />} />
               <Route path="/todo" element={<Notification />} />
               <Route path="/notes" element={<Home />} />
-              <Route path="/notes" element={<NotesTable />} />
+              <Route path="/admin" element={<NotesTable />} />
               <Route path="/room/:roomId" element={<Room />} />
               <Route path="/video" element={<Video />} />
               <Route path="/addnotes" element={<NotesForm />} />
@@ -159,6 +160,8 @@ const App = () => {
 
               <Route path='/game' element={<GameHomePage />} />
               <Route path="/room/:username/:roomCode" element={<GamePage />} />
+              <Route path="/company" element={<CompanyDetail />} />
+
             </Route>
 
 

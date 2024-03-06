@@ -15,7 +15,7 @@ const Forum = () => {
         const token = localStorage.getItem("authtoken");
 
         const response = await fetch(
-          "http://localhost:4000/api/v1/forum/getforums",
+          `${process.env.REACT_APP_API_HOST}/api/v1/forum/getforums`,
           {
             method: "GET",
             headers: {

@@ -15,11 +15,11 @@ const Post = ({ setGetForum }) => {
     event.preventDefault();
     const formData = new FormData(event.target);
 
-    const token = localStorage.getItem("auth");
+    const token = localStorage.getItem("authtoken");
 
     try {
       const response = await fetch(
-        "http://localhost:4000/api/v1/forum/createforum",
+        `${process.env.REACT_APP_API_HOST}/api/v1/forum/createforum`,
         {
           method: "POST",
           body: formData,
@@ -28,6 +28,7 @@ const Post = ({ setGetForum }) => {
           },
         }
       );
+    
 
       if (response.ok) {
         toast.success("Forum post created successfully");

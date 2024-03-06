@@ -36,8 +36,9 @@ const Notification = () => {
   }, [dispatch]);
 
   return (
-    <Alternates>
-      <div className="mt-16 text-3xl">To-DO</div>
+    <Alternates >
+      <div className="text-black">
+      <div className="mt-16 text-3xl text-black">To-DO</div>
       <div>
         <hr />
       </div>
@@ -78,6 +79,7 @@ const Notification = () => {
             </div>
           </div>
         ))}
+      </div>
       </div>
     </Alternates>
   );
