@@ -119,7 +119,7 @@ const App = () => {
               <Route path="/YourNotes" element={<YourNotes />} />
               <Route path="/todo" element={<Notification />} />
               <Route path="/notes" element={<Home />} />
-              <Route path="/notes" element={<NotesTable />} />
+              <Route path="/admin" element={<NotesTable />} />
               <Route path="/room/:roomId" element={<Room />} />
               <Route path="/video" element={<Video />} />
               <Route path="/addnotes" element={<NotesForm />} />
@@ -136,7 +136,6 @@ const App = () => {
               <Route path="/patdash" element={<PatDash />} />
               <Route path="/myevents" element={<MyEvents />} />
               <Route path="/forum" element={<Forum />} />
-              <Route path="/company" element={<CompanyDetail />} />
 
             </Route>
 
@@ -161,6 +160,8 @@ const App = () => {
 
               <Route path='/game' element={<GameHomePage />} />
               <Route path="/room/:username/:roomCode" element={<GamePage />} />
+              <Route path="/company" element={<CompanyDetail />} />
+
             </Route>
 
 

@@ -11,7 +11,7 @@ const MyCalendar = () => {
 
   const getAllEvents = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/v1/events/get", {
+      const res = await axios.get(`${process.env.REACT_APP_API_HOST}/api/v1/events/get`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("authtoken")}`,
