@@ -1,7 +1,7 @@
 import React from "react";
 import { BsCalendar2Date } from "react-icons/bs";
 
-const Card = () => {
+const Card = ({ data }) => {
   return (
     <div className="bg-white max-w-72 shadow-lg min-w-80 p-4 rounded-md font-semibold text-base">
       <div>Company Name</div>
@@ -13,7 +13,13 @@ const Card = () => {
         <div>5 march 2024</div>
       </div>
 
-      <div className="font-normal mt-4">SKills :</div>
+      <div className="font-normal mt-4">SKills : {
+        data.skills.map((skill, index) => {
+          return <span key={index} className="bg-slate-200 text-slate-800 p-1 rounded-md mr-1">{skill}</span>
+
+        })}
+
+      </div>
 
       <div className="flex flex-row mt-4">
         <button className=" bg-blue-500 text-white p-1 rounded-md hover:bg-blue-600">
