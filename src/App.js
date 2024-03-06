@@ -40,6 +40,7 @@ import UserHome from './pages/UserHome';
 import PatDash from './pages/PatDash';
 import MyEvents from './pages/MyEvents';
 import Forum from './pages/Forum';
+import CompanyDetail from './pages/CompanyDetail';
 
 
 const App = () => {
@@ -135,6 +136,7 @@ const App = () => {
               <Route path="/patdash" element={<PatDash />} />
               <Route path="/myevents" element={<MyEvents />} />
               <Route path="/forum" element={<Forum />} />
+              <Route path="/company" element={<CompanyDetail />} />
 
             </Route>
 

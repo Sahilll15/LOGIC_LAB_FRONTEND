@@ -36,7 +36,7 @@ const MyCalendar = () => {
     <div>
       <button
         onClick={toggleCalendarVisibility}
-        style={{ backgroundColor: "blue", color: "white" }}
+        className="p-2 bg-blue-500 text-white mt-2 rounded-md mb-2"
       >
         {calendarVisible ? "Hide Calendar" : "Show Calendar"}
       </button>
@@ -47,6 +47,7 @@ const MyCalendar = () => {
             events={events}
             startAccessor="start"
             endAccessor="end"
+            className="mr-12"
             style={{ height: 500 }}
             onSelectEvent={(event) => {
               console.log(event);
