@@ -157,10 +157,9 @@ const App = () => {
             >
               <Route path="/nviewer/:noteId" element={<Nviewer />} />
               <Route path="/quiz" element={<Quiz />} />
-
               <Route path='/game' element={<GameHomePage />} />
               <Route path="/room/:username/:roomCode" element={<GamePage />} />
-              <Route path="/company" element={<CompanyDetail />} />
+              <Route path="/company/:companyID" element={<CompanyDetail />} />
 
             </Route>
 
