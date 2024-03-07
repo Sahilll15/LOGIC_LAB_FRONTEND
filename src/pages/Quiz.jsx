@@ -7,7 +7,7 @@ const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [progress, setProgress] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [timeLeft, setTimeLeft] = useState(3000); // 5 minutes for the quiz
+  const [timeLeft, setTimeLeft] = useState(3000);
   const [questions] = useState([
     {
       questionText: "What is the capital of France?",
@@ -15,10 +15,10 @@ const Quiz = () => {
       correctAnswer: "Paris"
     },
     {
-        questionText: "Who wrote 'To Kill a Mockingbird'?",
-        options: ["Harper Lee", "Stephen King", "J.K. Rowling", "Mark Twain"],
-        correctAnswer: "Harper Lee"
-      },
+      questionText: "Who wrote 'To Kill a Mockingbird'?",
+      options: ["Harper Lee", "Stephen King", "J.K. Rowling", "Mark Twain"],
+      correctAnswer: "Harper Lee"
+    },
     {
       questionText: "Which planet is known as the Red Planet?",
       options: ["Mars", "Venus", "Jupiter", "Saturn"],
@@ -31,7 +31,7 @@ const Quiz = () => {
     }
   ]);
 
-  const [user] = useState({ name: "John Doe" }); // Dummy user object for testing
+  const [user] = useState({ name: "John Doe" });
   const navigate = useNavigate();
 
   const hasNextQuestion = currentQuestion < questions.length - 1 && questions.length > 0;
@@ -70,28 +70,28 @@ const Quiz = () => {
     }
   };
 
-  const handleSubmit = () => {  
+  const handleSubmit = () => {
     // navigate('/profile');
     toast.success('Quiz Submitted Successfully');
   }
 
   return (
     <>
-    <div className='p-4 ml-32'>
+      <div className='p-4 ml-32'>
         <h1 className="text-3xl font-bold mb-2">Welcome, {user.name}</h1>
-    </div>
+      </div>
       <div className="max-w-2xl mx-auto p-4 mt-9">
         <div className="mb-6 text-center">
-          
-          <br/><br/>
+
+          <br /><br />
           <div className='flex flex-wrap justify-between'>
-          
-          <div className="text-lg">Question {currentQuestion + 1} of {questions.length}</div>
-          <div className="text-lg"> 
-          <div className='flex '>
-          <FaClock className='mt-1 mr-2'/> 
-          Time left: {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toLocaleString('en-US', {minimumIntegerDigits: 2})}</div>
-          </div>
+
+            <div className="text-lg">Question {currentQuestion + 1} of {questions.length}</div>
+            <div className="text-lg">
+              <div className='flex '>
+                <FaClock className='mt-1 mr-2' />
+                Time left: {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toLocaleString('en-US', { minimumIntegerDigits: 2 })}</div>
+            </div>
           </div>
         </div>
         <div className="relative mb-4 h-4 bg-gray-300 rounded-full">
