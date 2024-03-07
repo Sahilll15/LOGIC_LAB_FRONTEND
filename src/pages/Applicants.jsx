@@ -37,14 +37,26 @@ const Applicants = () => {
     return (
         <Alternate>
 
-            <h3 className="text-xl font-semibold mb-2">Applicant Names:</h3>
-            <ul>
-                {placement.applicants.map((applicant) => (
-                    <div className="border border-black p-4 w-40">
-                        <li key={applicant._id}>{applicant.username}</li>
-                    </div>
-                ))}
-            </ul>
+            <div className="mt-10">
+                <h3 className="text-xl font-semibold mb-4">Applicant Names:</h3>
+                <ul className="flex flex-col gap-4">
+                    {placement.applicants.map((applicant) => (
+                        <div className="border border-black p-4 w-1/2 rounded-lg flex gap-4">
+                            <div>
+
+                                <img className="w-20" src={applicant.profile} alt="" />
+
+                            </div>
+                            <div>
+                                <li key={applicant._id}>{applicant.username}</li>
+                                <li>{applicant.email}</li>
+                                <li>{applicant.Department}</li>
+                            </div>
+
+                        </div>
+                    ))}
+                </ul>
+            </div>
 
 
         </Alternate >

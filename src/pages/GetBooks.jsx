@@ -18,10 +18,11 @@ const GetBooks = () => {
 
   const fetchBooksByScarping = async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/scrape`);
+      const res = await axios.get(`${host}/books`);
 
       if (res.status === 200) {
-        setBooksData(res.data.data);
+        console.log(res.data)
+        setBooksData(res.data.books);
       }
 
     } catch (error) {
@@ -50,10 +51,10 @@ const GetBooks = () => {
       <div className="grid grid-cols-1 mt-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {filteredBooks?.map((book) => (
           <div key={book.id} className="border p-4 rounded-md shadow-md" onClick={() => {
-            window.open(book.href, "_blank");
+            window.open(book.bookhref, "_blank");
           }}>
             <img
-              src={book.imageSrc}
+              src={book.imgSrc}
               alt={book.title}
               loading="lazy"
               className="w-full max-w-54 max-h-80 object-cover mb-2 rounded-md"
