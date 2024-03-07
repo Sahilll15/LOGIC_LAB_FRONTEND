@@ -125,7 +125,7 @@ const PatDash = () => {
 
   const getPieChartDataPoll = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API_HOST}/api/v1/polls/getPollPieChart/65e91cff9bc4d908a25035c1`
+      `${process.env.REACT_APP_API_HOST}/api/v1/polls/getPollPieChart/65e945343bd4ce93ad52709b`
     );
 
     if (response.status === 200) {

@@ -3,13 +3,16 @@ import axios from 'axios';
 import { toast } from 'react-toastify'
 import { useNavigate } from "react-router-dom";
 
+
+let host = process.env.REACT_APP_API_HOST;
+
 const Poll = () => {
     const navigate = useNavigate();
 
     const [currentPoll, setCurrentPoll] = useState({});
 
     const getPools = async () => {
-        const response = await axios.get('http://localhost:4000/api/v1/polls/getAllPolls')
+        const response = await axios.get(`${host}/api/v1/polls/getAllPolls`)
 
         if (response.status === 200) {
             setCurrentPoll(response.data[0])
@@ -31,7 +34,7 @@ const Poll = () => {
     };
 
     const handleQuiz = async () => {
-        const response = await axios.post(`http://localhost:4000/api/v1/polls/answerPolls/${currentPoll._id}`, {
+        const response = await axios.post(`${host}/api/v1/polls/answerPolls/${currentPoll._id}`, {
             answer: selectedOption
         }, {
             headers: {

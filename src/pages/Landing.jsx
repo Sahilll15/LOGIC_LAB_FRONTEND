@@ -40,7 +40,7 @@ const Landing = () => {
               <div className="flex flex-wrap items-center justify-between gap-6 md:py-3 md:gap-0 lg:py-5">
                 <div className="w-full items-center flex justify-between lg:w-auto">
                   <a className="relative z-10" href="#" aria-label="logo">
-                    <h1 className="text-white text-xl">NOTES SHARE</h1>
+                    <h1 className="text-white text-xl">CAREER CRAFT</h1>
                   </a>
                   <label
                     htmlFor="hbr"
@@ -126,16 +126,16 @@ const Landing = () => {
             <div className="lg:flex">
               <div className="relative mt-8 md:mt-16 space-y-8 sm:w-10/12 md:w-2/3 lg:ml-0 sm:mx-auto text-center lg:text-left lg:mr-auto lg:w-7/12">
                 <p className="sm:text-lg text-gray-700 dark:text-gray-300 lg:w-11/12">
-                  "Notes Share" is a website that provides handwritten notes on
+                  "CAREER CRAFT" is a website that provides handwritten CAREER CRAFT on
                   various topics.Users can earn pointsby uploading their own
-                  notes or engaging with the community, and use those points to
-                  unlock more notes or purchase them from other users. The
+                  CAREER CRAFT or engaging with the community, and use those points to
+                  unlock more CAREER CRAFT or purchase them from other users. The
                   website also features a leaderboard to encourage healthy
                   competition among users.
                 </p>
                 <span className="block font-semibold text-gray-500 dark:text-gray-400">
-                  With our NoteShare, you'll find everything you need to learn about our platform, understand its benefits,<br /> and take the first step towards hassle-free note sharing and collaboration. Join our community of knowledge enthusiasts today!
-                  <br /> Welcome to NOTES SHARE!
+                  With our CAREER CRAFT, you'll find everything you need to learn about our platform, understand its benefits,<br /> and take the first step towards hassle-free nCAREER CRAFT and collaboration. Join our community of knowledge enthusiasts today!
+                  <br /> Welcome to CAREER CRAFT
                 </span>
                 <div className="grid grid-cols-3 space-x-4 md:space-x-6 md:flex md:justify-center lg:justify-start">
                   <a
@@ -230,7 +230,7 @@ const Landing = () => {
                     Students Platform
                   </h1>
                   <p class="leading-relaxed text-base">
-                    Connect with your classmates. Enjoy the best quality of notes.
+                    Connect with your classmates. Enjoy the best quality of CAREER CRAFT.
                   </p>
 
                   <a class="mt-3 text-indigo-500 inline-flex items-center">
@@ -261,8 +261,8 @@ const Landing = () => {
             <div>
               <img src={BLogo3} className="mr-5  h-6 sm:h-9" alt="logo" />
               <p className="max-w-xs mt-4 text-sm text-gray-600">
-                At Notes Share, we're dedicated to transparency, security, and providing the best possible experience for our users. Join us today and become a part of our thriving note-sharing community.
-              </p>
+                At CAREER CRAFT, we're dedicated to transparency, security, and providing the best possible experience for our users. Join us today and become a part of our thriving -sharing community.
+              </p>CAREER CRAFT
 
             </div>
 

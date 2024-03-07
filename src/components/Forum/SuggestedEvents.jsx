@@ -2,6 +2,8 @@ import React from "react";
 import { useEvent } from "../../Context/EventContext";
 import { useState } from "react";
 import { useEffect } from "react";
+
+const host = process.env.REACT_APP_API_HOST;
 const SuggestedEvents = () => {
   const [events, setEvents] = useState([]);
 
@@ -58,7 +60,7 @@ const SuggestedEvents = () => {
               <div>
                 <img
                   src={
-                    `http://localhost:4000/${event.image}` ||
+                    `${host}/${event.image}` ||
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3nzdHxRZ_7w7JoH3dQlCi66ir4kP1a2JBuQ&usqp=CAU"
                   }
                   alt=""

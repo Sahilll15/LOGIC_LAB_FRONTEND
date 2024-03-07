@@ -106,7 +106,7 @@ const Register = () => {
             <div className="absolute bg-black opacity-60 inset-0 z-0" />
             <div className="w-full px-24 z-10">
               <h1 className="text-5xl font-bold text-left tracking-wide">
-                NOTES SHARE
+                CAREER CRAFT
               </h1>
               <p className="text-3xl my-4">
                 connect, collaborate, and thrive in a dynamic online community.

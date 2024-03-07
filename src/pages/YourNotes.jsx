@@ -3,6 +3,8 @@ import axios from 'axios'
 import NewCard from '../components/YourNotes/NewCard'
 import ChatLay from '../components/Layout/ChatLay';
 
+const host = process.env.REACT_APP_API_HOST
+
 const YourNotes = () => {
 
     const [UserNotes, setUserNotes] = useState([])
@@ -10,7 +12,7 @@ const YourNotes = () => {
 
     const fetchUserNotes = async () => {
         try {
-            const res = await axios.get(`http://localhost:4000/api/v1/notes/getUserUploadedNotes`, {
+            const res = await axios.get(`${host}/api/v1/notes/getUserUploadedNotes`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('authtoken')}`
                 },

@@ -11,6 +11,8 @@ import { Helmet } from "react-helmet";
 import { IoDocumentsOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom'
 
+const host = process.env.REACT_APP_API_HOST
+
 
 const Profile = () => {
     const [showLoader, setShowLoader] = useState(true);
@@ -58,7 +60,7 @@ const Profile = () => {
 
     const fetchSkillsByUsername = async () => {
         const response = await fetch(
-            `http://localhost:4000/api/v1/skills/getSkills/${username}`
+            `${host}/api/v1/skills/getSkills/${username}`
         );
         const data = await response.json();
         setSkills(data.skills);

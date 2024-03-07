@@ -186,6 +186,20 @@ export const SideBar = () => {
             </div>
           </NavLink>
 
+          <NavLink to={"/resumepredictor"}>
+            <div
+              className={`p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 ${location.pathname === "/books" ? "bg-blue-500" : ""
+                }`}
+            >ß
+              <i class="bi bi-book text-white"></i>
+              <span className="text-[15px] ml-4 text-gray-200 font-bold">
+                Resume Reviewßß
+              </span>
+            </div>
+          </NavLink>
+
+
+
 
           <NavLink to={"/dashboard"}>
             <div
@@ -237,19 +251,12 @@ export const SideBar = () => {
                 </div>
               </NavLink>
 
-              <NavLink to={"/dateform"}>
-                <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-                  <i className="bi bi-clipboard text-white"></i>
-                  <span className="text-[15px] ml-4 text-gray-200 font-bold">
-                    Dates
-                  </span>
-                </div>
-              </NavLink>
+
               <NavLink to={"/patdash"}>
                 <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
                   <i className="bi bi-person-fill-gear text-white"></i>
                   <span className="text-[15px] ml-4 text-gray-200 font-bold">
-                    Dashbaord
+                    PatDash
                   </span>
                 </div>
               </NavLink>
