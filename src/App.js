@@ -45,6 +45,8 @@ import Resumepredictor from './pages/Resumepredictor';
 import Applicants from './pages/Applicants';
 import Poll from './components/Poll';
 import Document from './components/Document';
+import Mentors from './pages/Mentors';
+
 
 
 const App = () => {
@@ -143,6 +145,7 @@ const App = () => {
               <Route path="/resumepredictor" element={<Resumepredictor />} />
               <Route path="/applicants/:id" element={<Applicants />} />
               <Route path="/documents" element={<Document />} />
+              <Route path="/mentors" element={<Mentors />} />
             </Route>
             <Route
               path="/"
