@@ -122,7 +122,7 @@ export const SideBar = () => {
             </div>
           </NavLink>
 
-          
+
 
           <NavLink to={"/todo"}>
             <div
@@ -172,7 +172,7 @@ export const SideBar = () => {
             </div>
           </NavLink>
 
-          
+
 
           <NavLink to={"/books"}>
             <div
@@ -185,7 +185,7 @@ export const SideBar = () => {
               </span>
             </div>
           </NavLink>
-          
+
 
           <NavLink to={"/dashboard"}>
             <div
@@ -195,6 +195,18 @@ export const SideBar = () => {
               <i className="bi bi-clipboard-data text-white"></i>
               <span className="text-[15px] ml-4 text-gray-200 font-bold">
                 Dashboard
+              </span>
+            </div>
+          </NavLink>
+
+          <NavLink to={"/patdash"}>
+            <div
+              className={`p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 ${location.pathname === "/patdash" ? "bg-blue-500" : ""
+                }`}
+            >
+              <i className="bi bi-clipboard-data text-white"></i>
+              <span className="text-[15px] ml-4 text-gray-200 font-bold">
+                PAT Dashboard
               </span>
             </div>
           </NavLink>

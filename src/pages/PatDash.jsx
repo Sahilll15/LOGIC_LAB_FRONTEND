@@ -5,19 +5,67 @@ import { toast } from "react-toastify";
 import axios from "axios";
 // import Card from "../components/Placement/Card";
 import PDashCard from "../components/Placement/PdashCard";
-import { array } from "i/lib/util";
+// import { array } from "i/lib/util";
 
 const PatDash = () => {
   const [showPlacementModal, setShowPlacementModal] = useState(false);
   const [showPollsModal, setShowPollsModal] = useState(false);
   const [piechartPoll, setpiechartpoll] = useState([]);
-  const [currentPoll, setCurrentPoll] = useState({});
+  // const [currentPoll, setCurrentPoll] = useState({});
   const [placements, setPlacements] = useState([]);
 
   const [pollData, setPollData] = useState({
     title: "",
     options: ["", "", "", ""],
   });
+
+  const [placementData, setPlacementData] = useState({
+    company: "",
+    details: "",
+    jobRole: "",
+    package: "",
+    endDate: "",
+    skills: "",
+  });
+
+  const handleChangePlacement = (e) => {
+    const { name, value } = e.target;
+    setPlacementData({
+      ...placementData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmitPlacement = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_HOST}/api/v1/placements/createPlacement`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("authtoken")}`,
+          },
+          body: JSON.stringify(placementData),
+        }
+      );
+
+      if (response.ok) {
+        toast.success("Placement created successfully!");
+        // Optionally, you can fetch the updated list of placements here
+        fetchPlacements();
+      } else {
+        toast.error("Failed to create placement");
+      }
+    } catch (error) {
+      toast.error("Error");
+      console.error("Error while creating placement", error);
+    }
+
+    closePlacementModal();
+  };
 
   const openPlacementModal = () => {
     setShowPlacementModal(true);
@@ -51,14 +99,11 @@ const PatDash = () => {
         }
       );
 
-
       if (response.ok) {
-
         toast.success("Poll created successfully!");
         console.log("Poll created successfully!");
         getPieChartDataPoll(response.data._id);
       } else {
-
         toast.error("Failed to create poll");
         console.error("Failed to create poll");
       }
@@ -66,7 +111,6 @@ const PatDash = () => {
       toast.error("Error");
       console.error("Error while creating poll", error);
     }
-
 
     closePollsModal();
   };
@@ -81,8 +125,7 @@ const PatDash = () => {
 
   const getPieChartDataPoll = async () => {
     const response = await axios.get(
-      `${process.env.REACT_APP_API_HOST}/api/v1/polls/getPollPieChart/65e8d901aac8aabcd674445d`
-
+      `${process.env.REACT_APP_API_HOST}/api/v1/polls/getPollPieChart/65e91cff9bc4d908a25035c1`
     );
 
     if (response.status === 200) {
@@ -99,9 +142,8 @@ const PatDash = () => {
       console.log(response);
 
       if (response.status === 200) {
-
         setPlacements(response.data);
-        console.log(response.data)
+        console.log(response.data);
       } else {
         console.error("Failed to fetch placements");
       }
@@ -151,46 +193,55 @@ const PatDash = () => {
                           CREATE PLACEMENT
                         </h1>
 
-                        <form className="max-w-xl mx-auto min-w-96">
+                        <form
+                          className="max-w-xl mx-auto min-w-96"
+                          onSubmit={handleSubmitPlacement}
+                        >
                           <div className="mb-4">
                             <label
-                              htmlFor="name"
+                              htmlFor="company"
                               className="block text-sm font-medium text-gray-700 mb-1"
                             >
-                              Name
+                              Company Name
                             </label>
                             <input
                               type="text"
-                              id="name"
-                              name="name"
+                              id="company"
+                              name="company"
+                              onChange={handleChangePlacement}
+                              value={placementData.name}
                               className="border-gray-300 border rounded-md w-full py-2 px-3 focus:outline-none focus:border-blue-400"
                             />
                           </div>
                           <div className="mb-4">
                             <label
-                              htmlFor="description"
+                              htmlFor="details"
                               className="block text-sm font-medium text-gray-700 mb-1"
                             >
-                              Description
+                              Details
                             </label>
                             <textarea
-                              id="description"
-                              name="description"
+                              id="details"
+                              name="details"
                               rows="3"
                               className="border-gray-300 border rounded-md w-full py-2 px-3 focus:outline-none focus:border-blue-400"
+                              onChange={handleChangePlacement}
+                              value={placementData.description}
                             ></textarea>
                           </div>
                           <div className="mb-4">
                             <label
-                              htmlFor="role"
+                              htmlFor="jobRole"
                               className="block text-sm font-medium text-gray-700 mb-1"
                             >
-                              Role
+                              Job Role
                             </label>
                             <input
                               type="text"
-                              id="role"
-                              name="role"
+                              id="jobRole"
+                              name="jobRole"
+                              onChange={handleChangePlacement}
+                              value={placementData.role}
                               className="border-gray-300 border rounded-md w-full py-2 px-3 focus:outline-none focus:border-blue-400"
                             />
                           </div>
@@ -205,6 +256,8 @@ const PatDash = () => {
                               type="text"
                               id="package"
                               name="package"
+                              onChange={handleChangePlacement}
+                              value={placementData.package}
                               className="border-gray-300 border rounded-md w-full py-2 px-3 focus:outline-none focus:border-blue-400"
                             />
                           </div>
@@ -219,6 +272,8 @@ const PatDash = () => {
                               type="date"
                               id="endDate"
                               name="endDate"
+                              onChange={handleChangePlacement}
+                              value={placementData.endDate}
                               className="border-gray-300 border rounded-md w-full py-2 px-3 focus:outline-none focus:border-blue-400"
                             />
                           </div>
@@ -233,6 +288,8 @@ const PatDash = () => {
                               type="text"
                               id="skills"
                               name="skills"
+                              onChange={handleChangePlacement}
+                              value={placementData.skills}
                               className="border-gray-300 border rounded-md w-full py-2 px-3 focus:outline-none focus:border-blue-400"
                             />
                           </div>
@@ -339,17 +396,19 @@ const PatDash = () => {
           )}
         </div>
         <div className="">
-          <h2 className="pt-5 font-bold text-black text-2xl mb-4">Campus Placement Drives </h2>
+          <h2 className="pt-5 font-bold text-black text-2xl mb-4">
+            Campus Placement Drives{" "}
+          </h2>
           <div className="flex flex-wrap  gap-4 items-center">
-            {
-              placements.map((placement) => {
-                return <PDashCard company={placement} />
-              })
-            }
+            {placements.map((placement) => {
+              return <PDashCard company={placement} />;
+            })}
           </div>
         </div>
         <div className="mt-4">
-          <h2 className="pt-5 font-bold text-black text-2xl">Analysis of the Latest Poll </h2>
+          <h2 className="pt-5 font-bold text-black text-2xl">
+            Analysis of the Latest Poll{" "}
+          </h2>
           <PieChart data={piechartPoll} />
         </div>
         {/* <PieChart data={pieChartData} /> */}
