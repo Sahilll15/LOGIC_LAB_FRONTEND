@@ -41,6 +41,10 @@ import PatDash from './pages/PatDash';
 import MyEvents from './pages/MyEvents';
 import Forum from './pages/Forum';
 import CompanyDetail from './pages/CompanyDetail';
+import Resumepredictor from './pages/Resumepredictor';
+import Applicants from './pages/Applicants';
+import Poll from './components/Poll';
+import Document from './components/Document';
 
 
 const App = () => {
@@ -136,11 +140,10 @@ const App = () => {
               <Route path="/patdash" element={<PatDash />} />
               <Route path="/myevents" element={<MyEvents />} />
               <Route path="/forum" element={<Forum />} />
-
+              <Route path="/resumepredictor" element={<Resumepredictor />} />
+              <Route path="/applicants/:id" element={<Applicants />} />
+              <Route path="/documents" element={<Document />} />
             </Route>
-
-
-
             <Route
               path="/"
               element={
@@ -160,6 +163,7 @@ const App = () => {
               <Route path='/game' element={<GameHomePage />} />
               <Route path="/room/:username/:roomCode" element={<GamePage />} />
               <Route path="/company/:companyID" element={<CompanyDetail />} />
+              <Route path="/poll" element={<Poll />} />
 
             </Route>
 

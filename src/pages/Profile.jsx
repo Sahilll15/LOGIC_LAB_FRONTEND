@@ -1,42 +1,39 @@
 import React, { useEffect, useState } from "react";
 import Alternates from "../components/Layout/Profile";
 import { Link, NavLink } from "react-router-dom";
-import { motion } from 'framer-motion';
-import { fadeIn } from '../Variants';
+import { motion } from "framer-motion";
+import { fadeIn } from "../Variants";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserProfile, getUserSkills } from "../redux/user/userActions";
 import { useParams } from "react-router-dom";
 import Loader from "../components/Loader";
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet";
+import { IoDocumentsOutline } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom'
 
 
 const Profile = () => {
-
     const [showLoader, setShowLoader] = useState(true);
-    const [skills, setSkills] = useState([])
+    const [skills, setSkills] = useState([]);
 
     const dispatch = useDispatch();
+
+    const navigate = useNavigate()
 
     const { username } = useParams();
 
     useEffect(() => {
-        dispatch(getUserSkills())
-    }, [dispatch])
-
-   
-
+        dispatch(getUserSkills());
+    }, [dispatch]);
 
     const [repositories, setRepositories] = useState([]);
     const [loading, setLoading] = useState(true);
-    const user = useSelector((state) => state?.userDetails?.userProfile)
-
+    const user = useSelector((state) => state?.userDetails?.userProfile);
 
     const [githubLink, setGithubLink] = useState(
         "https://github.com/yourusername"
     );
-    const [profileImage, setProfileImage] = useState(
-        user?.profile
-    );
+    const [profileImage, setProfileImage] = useState(user?.profile);
 
     const fetchRepos = async () => {
         const githubUsername = user?.githubUsername;
@@ -44,39 +41,33 @@ const Profile = () => {
             try {
                 const response = await fetch(
                     `https://api.github.com/users/${githubUsername}/repos?sort=created&direction=desc`
-                )
-                const data = await response.json()
+                );
+                const data = await response.json();
                 const firstThreeRepos = data.slice(0, 10);
                 setRepositories(firstThreeRepos);
                 setLoading(false);
-            } catch (error) {
-            }
+            } catch (error) { }
         } else {
-            setRepositories(null)
+            setRepositories(null);
         }
-
-    }
+    };
 
     useEffect(() => {
         fetchRepos();
     }, [user, username]);
 
     const fetchSkillsByUsername = async () => {
-        const response = await fetch(`http://localhost:4000/api/v1/skills/getSkills/${username}`)
-        const data = await response.json()
-        setSkills(data.skills)
-    }
-
-
-
+        const response = await fetch(
+            `http://localhost:4000/api/v1/skills/getSkills/${username}`
+        );
+        const data = await response.json();
+        setSkills(data.skills);
+    };
 
     useEffect(() => {
         dispatch(getUserProfile(username));
         fetchSkillsByUsername();
     }, [dispatch, username]);
-
-
-
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -84,59 +75,60 @@ const Profile = () => {
         }, 2000);
 
         return () => clearTimeout(timeout);
-
     }, [username]);
-
-
 
     if (showLoader) {
         return <Loader />;
     }
 
-
     return (
         <>
-         <Helmet>
-        <title>{`${user?.username}'s Profile`}</title> <meta name="description" content={user?.Bio} />
-
-        <meta name="description" content={`Noteshare is a students community`} />
-
-        <meta property="og:title" content={`${user?.username}'s Profile`}  />
-        <meta property="og:description" content={user?.Bio} />
-        <meta property="og:image" content={user?.profile} />
-        <meta property="og:url" content={`https://yourdomain.com/profile/${user?.username}`} />
-
-        <meta property="whatsapp:title" content={`${user?.username}'s Profile`} />
-        <meta property="whatsapp:description" content={user?.Bio} />
-        <meta property="whatsapp:image" content={user?.profile} />
-
-
-
-      </Helmet>
+            <Helmet>
+                <title>{`${user?.username}'s Profile`}</title>{" "}
+                <meta name="description" content={user?.Bio} />
+                <meta
+                    name="description"
+                    content={`Noteshare is a students community`}
+                />
+                <meta property="og:title" content={`${user?.username}'s Profile`} />
+                <meta property="og:description" content={user?.Bio} />
+                <meta property="og:image" content={user?.profile} />
+                <meta
+                    property="og:url"
+                    content={`https://yourdomain.com/profile/${user?.username}`}
+                />
+                <meta
+                    property="whatsapp:title"
+                    content={`${user?.username}'s Profile`}
+                />
+                <meta property="whatsapp:description" content={user?.Bio} />
+                <meta property="whatsapp:image" content={user?.profile} />
+            </Helmet>
 
             <Alternates>
                 <div>
                     <div className="flex flex-col md:flex-row">
                         {/* Left side - 1/3 */}
-                        <motion.div className="w-full md:w-1/3 p-4"
-                            initial='hidden'
-                            whileInView={'show'}
+                        <motion.div
+                            className="w-full md:w-1/3 p-4"
+                            initial="hidden"
+                            whileInView={"show"}
                             viewport={{ once: true, amount: 0.3 }}
-                            variants={fadeIn('right', 0.3)}>
+                            variants={fadeIn("right", 0.3)}
+                        >
                             <div className="mt-5 ">
                                 <div className="max-w-md mx-auto bg-white px-6 py-3 rounded-xl overflow-hidden md:max-w-2xl mt-5 ">
-
-
                                     <div className="flex justify-between">
                                         <img
                                             className="w-40 h-40 mt-4 rounded-full"
                                             src={user?.profile}
                                             alt="Profile Image"
                                         />
-                                        <NavLink to='/setting'>
+                                        <NavLink to="/setting">
                                             <p className="text-right border-2 bg-blue-500  text-white hover:bg-blue-700 p-2 px-4 rounded-lg">
                                                 <i class="bi bi-pencil-square mr-3 "></i>
-                                                EDIT</p>
+                                                EDIT
+                                            </p>
                                         </NavLink>
                                     </div>
                                     <div className="text-left mt-2">
@@ -146,11 +138,15 @@ const Profile = () => {
                                         <p className="text-sm text-gray-600 mt-3">Email Address:</p>
                                         <p>{user?.email}</p>
                                         <p className="text-sm text-gray-600 mt-3">GitHub ID</p>
-                                        <a href={`https://github.com/${user?.githubUsername}`} className="text-blue-500"> https://github.com/{user?.githubUsername}</a>
+                                        <a
+                                            href={`https://github.com/${user?.githubUsername}`}
+                                            className="text-blue-500"
+                                        >
+                                            {" "}
+                                            https://github.com/{user?.githubUsername}
+                                        </a>
                                         <p className="text-sm text-gray-600 mt-5">BIO</p>
-                                        <p className="mb-3">
-                                            {user?.Bio}
-                                        </p>
+                                        <p className="mb-3">{user?.Bio}</p>
                                     </div>
                                 </div>
                                 <div className="max-w-md mx-auto border-2 bg-white rounded-xl mb-5 overflow-hidden md:max-w-2xl mt-8 p-8">
@@ -170,6 +166,40 @@ const Profile = () => {
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="flex items-end bg-orange-100 p-6 rounded-md border border-orange-400 m-2">
+                                    <div class="flex flex-col items-start">
+                                        <span class="font-medium text-lg text-orange-900">
+                                            Update Your Documents
+                                        </span>
+                                        <p class="text-base mt-2 text-black">
+                                            Updating documents will help in smooth conduction of plcament and traning cell.
+                                        </p>
+
+                                        <button onClick={() => {
+                                            navigate('/documents')
+                                        }} class="flex justify-center items-center bg-orange-700 hover:bg-orange-800 pl-4 pr-4 pt-1.5 pb-1.5 mt-4 rounded-md text-white font-medium">
+                                            <span class="mr-2">Check Docs</span>
+                                            <svg
+                                                class="w-6 h-6"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                                                    stroke-linejoin="round"
+                                                    stroke-linecap="round"
+                                                ></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <IoDocumentsOutline className="text-6xl text-black" />
+
+                                </div>
+
                                 {/* <div className="bg-blue-600 hover:bg-blue-700 flex gap-2 text-white py-2 px-4 m-5 rounded">
                                     <a href="https://cv-host.netlify.app" target="_blank" className="flex gap-2 text-center justify-center mx-auto">
                                         <h1 className="text-xl">Create Your Resume</h1>
@@ -177,16 +207,16 @@ const Profile = () => {
                                     </a>
                                 </div> */}
                             </div>
-
-
                         </motion.div>
 
                         {/* Right side - 2/3 */}
-                        <motion.div className="w-full md:w-2/3 p-4"
-                            initial='hidden'
-                            whileInView={'show'}
+                        <motion.div
+                            className="w-full md:w-2/3 p-4"
+                            initial="hidden"
+                            whileInView={"show"}
                             viewport={{ once: true, amount: 0.3 }}
-                            variants={fadeIn('left', 0.3)}>
+                            variants={fadeIn("left", 0.3)}
+                        >
                             <div className="mt-5">
                                 <div className="w-full ">
                                     <div className="mt-5"></div>
@@ -239,7 +269,6 @@ const Profile = () => {
             </Alternates>
         </>
     );
-
 };
 
 export default Profile;

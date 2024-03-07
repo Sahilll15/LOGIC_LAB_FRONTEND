@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 function Resumepredictor() {
   const [loading, setLoading] = useState(false);
@@ -7,19 +8,20 @@ function Resumepredictor() {
   const handleGenerateContent = async () => {
     setLoading(true);
 
-    // Replace the following with your backend API endpoint
-    const response = await fetch('YOUR_BACKEND_API_ENDPOINT', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ datainput }),
-    });
+    try {
+      const response = await axios.post('http://localhost:4000/generate-content', {}, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
 
-    const data = await response.json();
-    setResult(data.text);
-
-    setLoading(false);
+      setResult(response.data.generatedText);
+      console.log(response.data.generatedText);
+    } catch (error) {
+      console.error('Error generating content:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
